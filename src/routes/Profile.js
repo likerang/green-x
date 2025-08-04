@@ -49,7 +49,7 @@ const Profile = ()=>{
       id:doc.id
     }));
     setComments(commentsArray);
-  }, []);
+  }, [user.uid]);
 
   // eslint-disable-next-line
   useEffect(()=>{
