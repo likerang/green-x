@@ -38,7 +38,8 @@ function App() {
         :
         "초기화중 . . ." 
       }
-      
+      <hr/>
+      <p>copyright likerang All rights reserved.</p>
     </div>
   );
 }
