@@ -30,7 +30,7 @@ const Home = ({userObj})=>{
   useEffect(()=>{
     getComments();
     console.log(comment);
-  },[comments]);
+  },[comment]);
 
   const onChange = (e)=>{
     //입력한 내용을 comment에 반영한다.
