@@ -1,12 +1,10 @@
 import Router from './Router';
 import { useState } from "react";
+// eslint-disable-next-line
 import { authService } from '../firebase';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
-console.log(authService);
 
 function App() {
 

@@ -50,7 +50,7 @@ const Profile = ()=>{
     }));
     setComments(commentsArray);
   }
-  
+  // eslint-disable-next-line
   useEffect(()=>{
     (user.photoURL !== null && user.photoURL.includes('firebase')) && setProfile(user.photoURL);
     getComments();
