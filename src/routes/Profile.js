@@ -3,7 +3,7 @@ import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { getStorage, ref, getDownloadURL, uploadBytes} from "firebase/storage";
 import { collection, query, where, getDocs, orderBy} from "firebase/firestore";
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { db } from '../firebase';
 import Comment from '../components/Comment';
@@ -41,7 +41,7 @@ const Profile = ()=>{
     console.log(user);
   }
 
-  const getComments = async ()=>{
+  const getComments = useCallback(async ()=>{
     const q = query(collection(db, "comments"), where("uid", "==", user.uid), orderBy('date', "desc"));
     const querySnapshot = await getDocs(q);
     const  commentsArray = querySnapshot.docs.map((doc)=>({
@@ -49,12 +49,13 @@ const Profile = ()=>{
       id:doc.id
     }));
     setComments(commentsArray);
-  }
+  }, []);
+
   // eslint-disable-next-line
   useEffect(()=>{
     (user.photoURL !== null && user.photoURL.includes('firebase')) && setProfile(user.photoURL);
     getComments();
-  },[]);
+  },[getComments, user.photoURL]);
   
   return(
     <>
